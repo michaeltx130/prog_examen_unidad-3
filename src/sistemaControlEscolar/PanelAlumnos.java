@@ -93,7 +93,7 @@ public class PanelAlumnos {
 		descargarbtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "Descarga completada.");
+				JOptionPane.showMessageDialog(null, "Descarga de información completa.", "Descargar información", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		descargarbtn.setContentAreaFilled(false);
@@ -123,6 +123,15 @@ public class PanelAlumnos {
 		panel_1.add(consultarbtn);
 		
 		JButton crearBtn = new JButton();
+		crearBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea crear otro perfil Alumno?", "Crear", JOptionPane.INFORMATION_MESSAGE);
+				if(respuesta == JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(null, "Se ha creado otro perfil Alumno.", "Crear", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		crearBtn.setBorderPainted(false);
 		crearBtn.setContentAreaFilled(false);
 		crearBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -132,6 +141,15 @@ public class PanelAlumnos {
 		panel_1.add(crearBtn);
 		
 		JButton editarBtn = new JButton();
+		editarBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Editar datos generales?", "Editar", JOptionPane.INFORMATION_MESSAGE);
+				if(respuesta == JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(null, "Se han editado los datos.", "Editar", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		editarBtn.setContentAreaFilled(false);
 		editarBtn.setBorderPainted(false);
 		editarBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -141,6 +159,20 @@ public class PanelAlumnos {
 		panel_1.add(editarBtn);
 		
 		JButton eliminarBtn = new JButton("");
+		eliminarBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro de querer eliminar este perfíl?.", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+				
+				if(respuesta ==  JOptionPane.YES_OPTION) {
+					frame.getContentPane().removeAll();
+					frame.getContentPane().repaint();
+					frame.getContentPane().revalidate();
+	
+					//Aquí podrías mandar al usuario al login nuevamente para que inicie sesión otra vez si quieres si no no
+				}
+			}
+		});
 		eliminarBtn.setContentAreaFilled(false);
 		eliminarBtn.setBorderPainted(false);
 		eliminarBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -229,7 +261,9 @@ public class PanelAlumnos {
 		panel_2.add(panel_6);
 		panel_6.setLayout(new BorderLayout());
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblNewLabel_2 = new JLabel("Fotografía del alumno");
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panel_6.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		JPanel panel_7 = new JPanel();
@@ -282,7 +316,9 @@ public class PanelAlumnos {
 		panel_2.add(panel_2_1);
 		panel_2_1.setLayout(new BorderLayout());
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("Datos generales");
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panel_2_1.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		JPanel panel_3 = new JPanel();
@@ -345,11 +381,13 @@ public class PanelAlumnos {
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.decode("#1e88e5"));
-		panel_4.setBounds(23, 295, 590, 114);
+		panel_4.setBounds(23, 295, 442, 114);
 		panel_2.add(panel_4);
 		panel_4.setLayout(new BorderLayout());
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel("Escolaridad");
+		lblNewLabel_3.setForeground(new Color(0, 0, 0));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		JPanel panel_5 = new JPanel();
@@ -359,53 +397,83 @@ public class PanelAlumnos {
 		
 		JLabel descripcion_etiqueta = new JLabel("Nivel Educativo:");
 		descripcion_etiqueta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		descripcion_etiqueta.setBounds(23, 21, 106, 14);
+		descripcion_etiqueta.setBounds(21, 11, 106, 14);
 		panel_5.add(descripcion_etiqueta);
 		
 		JLabel preferencias_etiqueta = new JLabel("N° Matrícula:");
 		preferencias_etiqueta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		preferencias_etiqueta.setBounds(22, 58, 77, 14);
+		preferencias_etiqueta.setBounds(21, 41, 77, 14);
 		panel_5.add(preferencias_etiqueta);
 		
 		JTextField textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(137, 19, 136, 20);
+		textField_5.setBounds(137, 9, 136, 20);
 		panel_5.add(textField_5);
 		
 		JTextField textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(137, 56, 136, 20);
+		textField_6.setBounds(137, 39, 136, 20);
 		panel_5.add(textField_6);
 		
 		JLabel descripcion_etiqueta_1 = new JLabel("Semestre:");
 		descripcion_etiqueta_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		descripcion_etiqueta_1.setBounds(301, 22, 77, 14);
+		descripcion_etiqueta_1.setBounds(301, 16, 68, 14);
 		panel_5.add(descripcion_etiqueta_1);
 		
 		JTextField textField_7 = new JTextField();
 		textField_7.setColumns(10);
-		textField_7.setBounds(372, 19, 50, 20);
+		textField_7.setBounds(369, 14, 50, 20);
 		panel_5.add(textField_7);
 		
 		JLabel descripcion_etiqueta_1_1 = new JLabel("Grupo:");
 		descripcion_etiqueta_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		descripcion_etiqueta_1_1.setBounds(448, 21, 50, 14);
+		descripcion_etiqueta_1_1.setBounds(301, 68, 50, 14);
 		panel_5.add(descripcion_etiqueta_1_1);
 		
 		JTextField textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(508, 19, 50, 20);
+		textField_8.setBounds(369, 66, 50, 20);
 		panel_5.add(textField_8);
 		
 		JLabel descripcion_etiqueta_2 = new JLabel("Carrera:");
 		descripcion_etiqueta_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		descripcion_etiqueta_2.setBounds(302, 58, 62, 14);
+		descripcion_etiqueta_2.setBounds(21, 68, 62, 14);
 		panel_5.add(descripcion_etiqueta_2);
 		
 		JTextField textField_9 = new JTextField();
 		textField_9.setColumns(10);
-		textField_9.setBounds(372, 56, 186, 20);
+		textField_9.setBounds(137, 70, 136, 20);
 		panel_5.add(textField_9);
 		
+		JButton btnSalir = new JButton("Salír de esta opción");
+		btnSalir.setForeground(new Color(0, 0, 0));
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSalir.setBounds(475, 370, 132, 39);
+		panel_2.add(btnSalir);
+		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Acceso a mi información" + "");
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		chckbxNewCheckBox.setBounds(471, 291, 145, 22);
+		panel_2.add(chckbxNewCheckBox);
+		
+		JButton btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setForeground(Color.BLACK);
+		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnGuardar.setBounds(475, 320, 132, 39);
+		panel_2.add(btnGuardar);
+		btnSalir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.getContentPane().removeAll();
+				frame.getContentPane().repaint();
+				frame.getContentPane().revalidate();
+				
+				 PanelAlumnos(frame);	
+			}
+		});	
 	}
 }
